@@ -12,12 +12,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  data() async {
-    var marketBox = Hive.box('market');
-    if (settingsController.cart?.isEmpty == true) {
-      await marketBox.delete('market');
-    }
-  }
 
   @override
   void initState() {
@@ -28,7 +22,6 @@ class _SplashScreenState extends State<SplashScreen> {
         setState(() {});
       }
     });
-    data();
     Future.delayed(const Duration(milliseconds: 4000), () {
       context.go('/home');
     });
@@ -43,23 +36,8 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
         child: Stack(children: [
           Align(
-            alignment: Alignment.topLeft,
-            child: Image.asset(
-              'assets/img/splash/top.png',
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Image.asset(
-              'assets/img/splash/bottom.png',
-            ),
-          ),
-          Align(
             alignment: Alignment.center,
-            child: Image.asset(
-              'assets/img/splash/logo.png',
-              width: LightTheme.mediaQueryData.size.width * 0.5,
-            ),
+            child: Text('Splash Screen'),
           ),
         ]),
       ),
