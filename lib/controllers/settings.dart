@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:fakestoreapi/models/product_cart.dart';
 import 'package:fakestoreapi/services/settings.dart';
 import 'package:flutter/material.dart';
@@ -36,13 +35,6 @@ class SettingsController with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<PermissionStatus> getLocationPermissionStatus() async {
-    var permissionStatus = await Permission.location.status;
-    if (!permissionStatus.isGranted) {
-      permissionStatus = await Permission.location.request();
-    }
-    return permissionStatus;
-  }
 
   
 
